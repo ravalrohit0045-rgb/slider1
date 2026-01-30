@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="projectslider.css" />
+  </head>
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+  .slider {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    overflow: hidden;
+    img{
+        width: 405px;
+        height: 600px;
+    }
+  }
+  
+  .slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+  }
+  
+  button.prev,
+  button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .prev { left: 5px; }
+  .next { right: 540px; }
+  </style>
+  <body>
+    <div class="slider">
+      <img
+        src="https://w0.peakpx.com/wallpaper/65/923/HD-wallpaper-rohit-sharma-champion-ipl-2020-mumbai-indians.jpg"
+        class="slide"
+        alt=""
+        
+        
+      />
+      <img
+        src="https://i.pinimg.com/564x/ab/01/cb/ab01cb16e6473dc3b5508d4f06e33b7c.jpg"
+        class="slide"
+        alt=""
+        height="500px"
+        width="500px"
+        
+      />
+      <img
+        src="https://c.ndtvimg.com/2023-11/1qhicum_rohit-sharma_625x300_20_November_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=675"
+        class="slide"
+        alt=""
+        height="500px"
+        width="500px"
+      />
+
+      <button class="prev" onclick="prevSlide()"> < </button>
+      <button class="next" onclick="nextSlide()"> > </button>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide) => (slide.style.display = "none"));     
+        slides[index].style.display = "block";
+      }
+
+      function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;    
+        showSlide(slideIndex);                           
+      }                                                    
+
+      function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;   
+        showSlide(slideIndex);                                            
+      }                                                                    
+
+      showSlide(slideIndex);
+    </script>
+  </body>
+</html>
